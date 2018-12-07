@@ -1,5 +1,7 @@
 package com.springboot.database.exception;
 
+import com.springboot.database.enums.ResultEnum;
+
 /**
  * @program: database
  * @description: 关于年龄的异常类
@@ -10,9 +12,9 @@ public class GirlException extends RuntimeException {
 
     private Integer code;
 
-    public GirlException(Integer code, String message) {
-        super(message);
-        this.code = code;
+    public GirlException(ResultEnum resultEnum) {
+        super(resultEnum.getMsg());
+        this.code = resultEnum.getCode();
     }
 
     public Integer getCode() {
