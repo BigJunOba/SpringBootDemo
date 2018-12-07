@@ -5,6 +5,7 @@ import com.springboot.database.domain.Girl;
 import com.springboot.database.domain.Result;
 import com.springboot.database.repository.GirlRepository;
 import com.springboot.database.service.GirlService;
+import com.springboot.database.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,19 +50,11 @@ public class GirlController {
     @PostMapping(value = "/girls/add")
     public Result<Girl> girlAdd(@Valid Girl girl, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            Result result = new Result();
-            result.setCode(1);
-            result.setMsg(bindingResult.getFieldError().getDefaultMessage());
-            result.setData(null);
-            return result;
+            return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
         }
         girl.setCupSize(girl.getCupSize());
         girl.setAge(girl.getAge());
-        Result result = new Result();
-        result.setCode(0);
-        result.setMsg("成功");
-        result.setData(girlRepository.save(girl));
-        return result;
+        return ResultUtil.success(girlRepository.save(girl));
     }
 
     @DeleteMapping("/girls/delete/{id}")
