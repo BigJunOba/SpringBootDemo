@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Girl {
@@ -11,6 +12,8 @@ public class Girl {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @NotNull(message = "这个字段不能为 null")
     private String cupSize;
 
     @Min(value = 18, message = "age 小于 18")
