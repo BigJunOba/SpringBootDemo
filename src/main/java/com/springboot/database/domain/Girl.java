@@ -42,4 +42,13 @@ public class Girl {
     public void setCupSize(String cupSize) {
         this.cupSize = cupSize;
     }
+
+    @Override
+    public String toString() {
+        return "Girl{" +
+                "id=" + id +
+                ", cupSize='" + cupSize + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

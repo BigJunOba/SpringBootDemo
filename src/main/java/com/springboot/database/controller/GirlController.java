@@ -1,8 +1,11 @@
 package com.springboot.database.controller;
 
+import com.springboot.database.aspect.HttpAspect;
 import com.springboot.database.domain.Girl;
 import com.springboot.database.repository.GirlRepository;
 import com.springboot.database.service.GirlService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ import java.util.List;
 @RestController
 public class GirlController {
 
+    private final static Logger logger = LoggerFactory.getLogger(GirlController.class);
+
     @Autowired
     private GirlRepository girlRepository;
 
@@ -22,6 +27,7 @@ public class GirlController {
 
     @GetMapping(value = "/girls")
     public List<Girl> girlsList() {
+        logger.info("girlsList");
         return girlRepository.findAll();
     }
 
