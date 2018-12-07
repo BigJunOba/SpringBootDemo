@@ -1,6 +1,7 @@
 package com.springboot.database.utils;
 
 import com.springboot.database.domain.Result;
+import com.springboot.database.enums.ResultEnum;
 import jdk.nashorn.internal.ir.ReturnNode;
 
 /**
@@ -12,11 +13,7 @@ import jdk.nashorn.internal.ir.ReturnNode;
 public class ResultUtil {
 
     public static Result success(Object object) {
-        Result result = new Result();
-        result.setCode(0);
-        result.setMsg("成功");
-        result.setData(object);
-        return result;
+        return new Result(ResultEnum.SUCCESS, object);
     }
 
     public static Result success() {
