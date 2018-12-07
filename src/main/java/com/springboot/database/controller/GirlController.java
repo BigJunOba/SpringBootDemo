@@ -4,8 +4,10 @@ import com.springboot.database.domain.Girl;
 import com.springboot.database.repository.GirlRepository;
 import com.springboot.database.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.util.List;
 
@@ -34,6 +36,17 @@ public class GirlController {
         girl.setCupSize(cupSize);
         girl.setAge(age);
         girl.setId(id);
+        return girlRepository.save(girl);
+    }
+
+    @PostMapping(value = "/girls/add")
+    public Girl girlAdd(@Valid Girl girl, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return null;
+        }
+        girl.setCupSize(girl.getCupSize());
+        girl.setAge(girl.getAge());
         return girlRepository.save(girl);
     }
 
