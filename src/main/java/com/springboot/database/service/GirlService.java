@@ -26,4 +26,19 @@ public class GirlService {
         girlRepository.save(girlB);
     }
 
+    public void getAge(Integer id) throws Exception{
+        Girl girl = girlRepository.findOne(id);
+        Integer age = girl.getAge();
+        if (age < 10) {
+            // 返回“年龄小于 10”
+            throw new Exception("年龄小于 10");
+        } else if (age > 10 && age < 16) {
+            // 返回“年龄在 10~16 岁之间”
+            throw new Exception("年龄在 10~16 岁之间");
+        }
+
+        // 其他操作
+        // ...
+
+    }
 }
