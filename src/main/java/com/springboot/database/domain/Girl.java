@@ -3,6 +3,7 @@ package com.springboot.database.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Girl {
@@ -11,6 +12,8 @@ public class Girl {
     @GeneratedValue
     private Integer id;
     private String cupSize;
+
+    @Min(value = 18, message = "age 小于 18")
     private Integer age;
 
     public Girl() {
