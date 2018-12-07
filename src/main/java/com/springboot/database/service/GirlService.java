@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Id;
+
 @Service
 public class GirlService {
 
@@ -42,5 +44,16 @@ public class GirlService {
         // 其他操作
         // ...
 
+    }
+
+    /**
+    * @Description: 通过Id查询一个女生的信息
+    * @Param: Id
+    * @return: 查询到的女生的信息
+    * @Author: JunOba
+    * @Date: 2018/12/7
+    */
+    public Girl findOne(Integer id) {
+        return girlRepository.findOne(id);
     }
 }
