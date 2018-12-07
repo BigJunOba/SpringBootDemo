@@ -1,5 +1,8 @@
-package com.springboot.database;
+package com.springboot.database.controller;
 
+import com.springboot.database.domain.Girl;
+import com.springboot.database.repository.GirlRepository;
+import com.springboot.database.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
