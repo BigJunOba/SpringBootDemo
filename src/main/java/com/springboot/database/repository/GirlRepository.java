@@ -1,5 +1,6 @@
-package com.springboot.database;
+package com.springboot.database.repository;
 
+import com.springboot.database.domain.Girl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

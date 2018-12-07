@@ -1,4 +1,4 @@
-package com.springboot.database;
+package com.springboot.database.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
