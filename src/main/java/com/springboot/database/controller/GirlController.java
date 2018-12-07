@@ -2,6 +2,7 @@ package com.springboot.database.controller;
 
 import com.springboot.database.aspect.HttpAspect;
 import com.springboot.database.domain.Girl;
+import com.springboot.database.domain.Result;
 import com.springboot.database.repository.GirlRepository;
 import com.springboot.database.service.GirlService;
 import org.slf4j.Logger;
@@ -46,13 +47,21 @@ public class GirlController {
     }
 
     @PostMapping(value = "/girls/add")
-    public Object girlAdd(@Valid Girl girl, BindingResult bindingResult) {
+    public Result<Girl> girlAdd(@Valid Girl girl, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return bindingResult.getFieldError().getDefaultMessage();
+            Result result = new Result();
+            result.setCode(1);
+            result.setMsg(bindingResult.getFieldError().getDefaultMessage());
+            result.setData(null);
+            return result;
         }
         girl.setCupSize(girl.getCupSize());
         girl.setAge(girl.getAge());
-        return girlRepository.save(girl);
+        Result result = new Result();
+        result.setCode(0);
+        result.setMsg("成功");
+        result.setData(girlRepository.save(girl));
+        return result;
     }
 
     @DeleteMapping("/girls/delete/{id}")
